@@ -122,7 +122,7 @@ async fn fdpass_systemd_async() {
 #[cfg(feature = "ibus")]
 #[test]
 fn test_ibus() {
-    let ibus = block_on(conn::Builder::ibus().unwrap().build()).unwrap();
+    let ibus = block_on(block_on(conn::Builder::ibus()).unwrap().build()).unwrap();
 
     assert!(!ibus.server_guid().as_str().is_empty());
 }
